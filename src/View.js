@@ -7,10 +7,8 @@ export default function View() {
 
     const [list, listHandle] =useState([]);
     const [loading, loadingHandle] = useState(true);
-    const [result, resultHandle] = useState("");
-    const [url, urlHandle] = useState("https://powerful-puce-angler.cyclic.app/api/v1/user/")
     const getAll = async () => {
-        await fetch(url,{
+        await fetch("https://powerful-puce-angler.cyclic.app/api/v1/user/",{
             method : "GET"
         })
         .then((res) => {
@@ -35,7 +33,6 @@ export default function View() {
         })
         .then((data) =>{
             getAll();
-            resultHandle(data);
             console.log(data);
         })
     }
