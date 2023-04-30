@@ -4,22 +4,25 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Create from "./Create";
 import View from "./View";
 import Update from "./Update";
+import {MyProvider} from "./Context/MyProvider"
 
 function App() {
   return (
-    <div className="">
-      <Header />
-      <div className="container">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/view" element={<View />} />
-            <Route path="/update" element={<Update />} />
-          </Routes>
-        </BrowserRouter>
+    <MyProvider>
+      <div className="">
+        <Header />
+        <div className="container">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/view" element={<View />} />
+              <Route path="/update" element={<Update />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
       </div>
-    </div>
+    </MyProvider>
   );
 }
 

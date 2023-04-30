@@ -1,8 +1,10 @@
 import React, {useRef} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { UseProvider } from './Context/MyProvider';
 
 export default function Update() {
+    const { API_URL } = UseProvider();
     const locationData = useLocation();
     const navigate = useNavigate();
     const{id, name, age} = (locationData.state !== null) ? locationData.state : "";
@@ -11,7 +13,7 @@ export default function Update() {
     const ageRef = useRef();
     const dataUpdate = async (e) =>{
         e.preventDefault();
-        await fetch("https://powerful-puce-angler.cyclic.app/api/v1/user/"+idRef.current.value,
+        await fetch(API_URL+"/user/"+idRef.current.value,
         {
             method : "PUT",
             headers : {

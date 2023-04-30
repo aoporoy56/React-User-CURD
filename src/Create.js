@@ -1,15 +1,16 @@
 import { Button, Form } from 'react-bootstrap'
 import React, {useRef, useState} from 'react'
+import { UseProvider } from "./Context/MyProvider";
 
 export default function Create() {
-
+    const {API_URL} = UseProvider();
     const nameRef = useRef("");
     const ageRef = useRef("");
     const [massage, messageHandle] = useState("");
     const [dataAddLoading, dataAddLoadingHandle] = useState(false);
     const dataAdd = async(e) =>{
         e.preventDefault();
-        await fetch("https://powerful-puce-angler.cyclic.app/api/v1/user/",{
+        await fetch(API_URL+ "/user/",{
             method : "POST",
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
