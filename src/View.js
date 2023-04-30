@@ -22,7 +22,8 @@ export default function View() {
   };
   useEffect(() => {
     getAll();
-  }, [navigate]);
+    // eslint-disable-next-line
+  }, [API_URL]);
   const deleteData = async (id) => {
     await fetch(API_URL + "/user/" + id, {
       method: "Delete",
